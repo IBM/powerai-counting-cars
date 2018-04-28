@@ -102,3 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# IntelliJ/PyCharm
+.idea/
+
+# VS Code (and history plugin)
+.history/
+.vscode/
+
