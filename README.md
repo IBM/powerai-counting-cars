@@ -1,22 +1,28 @@
 # Detect, track, and count cars in a video
-Object detection in videos with semi-automatic labeling
 
-In this Code Pattern, we will [create something] using [technologies] and [components]. [Explain briefly how things work]. [Give acknowledgements to others if necessary]
+Whether you are counting cars on a road or products on a conveyer belt, there are many use cases for computer vision with video. With video as input, auto-labeling can be used to create a better classifier with less manual effort. This Code Pattern shows you how to create and use a classifier to identify objects in motion and then track the objects and count them as they enter designated regions of interest. 
+
+In this Code Pattern, we will create a video car counter using PowerAI Vision Video Data Platform, OpenCV and a Jupyter Notebook. We'll use a little manual labeling and a lot of auto-labeling to train an object classifier to recognize cars on a highway. We'll load another car video into a Jupyter Notebook where we'll process the individual frames and annotate the video.
+
+We'll use our deployed model for inference to detect cars on a sample of the frames at a regular interval. We'll use OpenCV to track the cars from frame to frame in between inference. In addition to counting the cars as they are detected, we'll also count them as they cross a "finish line" for each lane and show cars per second.
+
+Credit goes to Michael Hollinger for his initial notebook counting objects with the PowerAI Vision Video Data Platform.
 
 When the reader has completed this Code Pattern, they will understand how to:
 
-* [goal 1]
-* [goal 2]
-* [goal 3]
-* [goal 4]
+* Use auto-labeling to create an object detection classifier from a video
+* Process frames of a video using a Jupyter Notebook, OpenCV, and PowerAI Vision
+* Detect objects in video frames with PowerAI Vision
+* Track objects from frame to frame with OpenCV
+* Count objects in motion as they enter a region of interest
+* Annotate a video with bounding boxes, labels and statistics
 
-<!--Remember to dump an image in this path-->
 ![](doc/source/images/architecture.png)
 
 ## Flow
 1. Upload a video using the PowerAI Vision web UI.
 2. Use auto-labeling and train a model.
-3. Deploy the model to create a PowerAI Vision REST API.
+3. Deploy the model to create a PowerAI Vision inference API.
 4. Use a Jupyter Notebook to detect, track, and count cars in a video.
 
 ## Included components
@@ -24,6 +30,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 * [IBM Power AI](https://www.ibm.com/ms-en/marketplace/deep-learning-platform): A software platform that makes deep learning, machine learning, and AI more accessible and better performing.
 * [IBM PowerAI Vision Technology Preview](https://developer.ibm.com/linuxonpower/deep-learning-powerai/technology-previews/powerai-vision/): A complete ecosystem for labeling datasets, training, and deploying deep learning models for computer vision.
 * [Jupyter Notebook](http://jupyter.org/): An open source web application that allows you to create and share documents that contain live code, equations, visualizations, and explanatory text.
+* [OpenCV](https://opencv.org): Open source computer vision library.
 * [Nimbix Cloud Computing Platform](https://www.nimbix.net/): An HPC & Cloud Supercomputing platform enabling engineers, scientists & developers, to build, compute, analyze, and scale simulations in the cloud.
 
 ## Featured technologies

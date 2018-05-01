@@ -18,10 +18,10 @@ if [ $# -eq 0 ]; then
 fi
 
 palette="/tmp/palette.png"
-filters="fps=5,scale=320:-1:flags=lanczos"
+filters="fps=10,scale=320:-1:flags=lanczos"
 
 ffmpeg -v warning -i "$1/output-video.mp4" -vf "$filters,palettegen=stats_mode=diff" -y $palette
-ffmpeg -i "$1/output-video.mp4" -r "5" -i $palette -lavfi "$filters,paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y output/output-video-as-gif.gif
+ffmpeg -i "$1/output-video.mp4" -r "15" -i $palette -lavfi "$filters,paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y output/output-video-as-gif.gif
 
 echo "Created gif \"$1/output-video-as-gif.gif\" from \"$1/output-video.mp4\""
 
