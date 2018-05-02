@@ -174,7 +174,7 @@ You can create an MP4 video from the annotated frames if you have a working inst
 
 ```
 cd powerai-counting-cars
-./tools/create_video.sh output
+./tools/create_video.sh notebooks/output
 ```
 
 > Note: There is also a tool to create a gif from the video. We used that to show the sample output below.
