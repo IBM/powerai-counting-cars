@@ -83,18 +83,22 @@ To create a new dataset for object detection training from a video, use PowerAI 
 * Download the video to use to train the dataset from [here]( https://ibm.box.com/v/counting-cars-training). Use the `Download` button to create `training_video.mp4` in your browser's Downloads folder.
 
 * Go to [Video Data Platform](https://ny1.ptopenlab.com/video#/) and click on the  `DataSet` card.
-![add_dataset](doc/source/images/video_data_platform_dataset.png)
+
+  ![add_dataset](doc/source/images/video_data_platform_dataset.png)
 
 * Provide a name and description and click `Confirm`.
 * Use the `Operation` button for your dataset and select `Manage Videos` with the pull-down.
+
   ![add_dataset](doc/source/images/manage_videos.png)
 
 * Use the `Upload Video` button to upload the `training_video.mp4` from above.
 
 * Use the video's `Operation` button and select `Add Label` with the pull-down.
+
   ![add_label](doc/source/images/add_label.png)
 
 * Type `car` in the `Need More Tag? Input and Press enter...` box and press enter. The `car` tag is then added to the `Tag` pull-down so you can start tagging cars.
+
   ![new_tag](doc/source/images/new_tag.png)
 
 * Do manual tagging for 5 frames.
@@ -108,13 +112,15 @@ To create a new dataset for object detection training from a video, use PowerAI 
   ![manual_tagging](doc/source/images/manual_tagging.png)
 
 * Use the breadcrumb to go back to `Video Management`.
+
   ![breadcrumb](doc/source/images/breadcrumb.png)
 
 * Use the video's `Operation` button and select `Export Labels` with the pull-down.
+
   ![export_labels](doc/source/images/export_labels.png)
 
 
-### 2. Manual-labeling
+### 2. Manual labeling
 
 We need to train and deploy the model so that we can use it (for automatic labeling).
 
@@ -139,9 +145,11 @@ We use the model that you trained with 5 or more manually annotated frames and u
 * Use the sidebar to go back to `Video Data Platform`.
 
 * Use the video's `Operation` button and select `Auto Labeling` with the pull-down.
+
   ![auto_labeling](doc/source/images/auto_labeling.png)
 
 * Click on the `Objet to detect` pull-down and select `car`. This API will be available while your car model is deployed.
+
   ![select_detect_api](doc/source/images/select_detect_api.png)
 
 * Use the `Time Interval` pull-down to select an interval. Use 1 second for our short video.
@@ -149,6 +157,7 @@ We use the model that you trained with 5 or more manually annotated frames and u
 * Click `Confirm`.
 
 * You can watch the progress as the number under auto label increases and the progress bar shows you the auto labeling progress.
+
   ![auto_labeling_progress](doc/source/images/auto_labeling_progress.png)
 
 * When the task completes, use the video's `Operation` button and select `Validate` to review the auto labeling.
