@@ -62,19 +62,14 @@ Use `SuperVessel` and `Register for access` to the SuperVessel cloud where you c
 
 The code included in this Code Pattern runs in a Jupyter Notebook. The notebook itself does not require PowerAI or Power Systems (only access to the deployed API). To run the Jupyter Notebook locally, install it using Anaconda.  The installation instructions are [here](http://jupyter.readthedocs.io/en/latest/install.html).
 
-Start your Jupyter Notebooks by running the following command:
-
-```
-jupyter notebook
-```
-
 # Steps
 
 1. [Create a dataset in Video Data Platform](#1-create-a-dataset-in-video-data-platform)
-2. [Manual labeling](#2-manual-labeling)
+2. [Train and deploy](#2-train-and-deploy)
 3. [Automatic labeling](#3-automatic-labeling)
-4. [Run the notebook](#4-run-the-notebook)
-5. [Create the annotated video](#5-create-the-annotated-video)
+4. [Train and deploy](#4-train-and-deploy)
+5. [Run the notebook](#5-run-the-notebook)
+6. [Create the annotated video](#6-create-the-annotated-video)
 
 ### 1. Create a dataset in Video Data Platform
 
@@ -119,8 +114,7 @@ To create a new dataset for object detection training from a video, use PowerAI 
 
   ![export_labels](doc/source/images/export_labels.png)
 
-
-### 2. Manual labeling
+### 2. Train and deploy
 
 We need to train and deploy the model so that we can use it (for automatic labeling).
 
@@ -138,6 +132,8 @@ We need to train and deploy the model so that we can use it (for automatic label
 
   ![deploy_and_test](doc/source/images/deploy_and_test.png)
 
+* If/when you want to deploy/redeploy later, just click the `Deploy` button next to your trained model here: https://ny1.ptopenlab.com/AIVision/#!/trained-models.
+
 ### 3. Automatic labeling
 
 We use the model that you trained with 5 or more manually annotated frames and use inference to automatically label more cars in your training video.
@@ -148,7 +144,7 @@ We use the model that you trained with 5 or more manually annotated frames and u
 
   ![auto_labeling](doc/source/images/auto_labeling.png)
 
-* Click on the `Objet to detect` pull-down and select `car`. This API will be available while your car model is deployed.
+* Click on the `Object to detect` pull-down and select `car`. This API will be available while your car model is deployed.
 
   ![select_detect_api](doc/source/images/select_detect_api.png)
 
@@ -162,13 +158,64 @@ We use the model that you trained with 5 or more manually annotated frames and u
 
 * When the task completes, use the video's `Operation` button and select `Validate` to review the auto labeling.
 
-* Export labels, train and deploy the new dataset with significantly more labeled cars. This model should be much more accurate than our first model.
+### 4. Train and deploy
 
-### 4. Run the notebook
+Export the labels again and repeat the above train and deploy process with the newest dataset which was enhanced with automatic labeling.
 
-Just run it. Maybe read it. OK, this section is TODO.
+* Export labels
+* Build model
+* Deploy
 
-### 5. Create the annotated video
+This dataset has many more frames and labeled objects. It will create a much more accurate model.
+
+### 5. Run the notebook
+
+The code included in this Code Pattern runs in a Jupyter Notebook. After you configure the URL of your deployed model in the notebook, you can just run it, read it, and watch the results.
+
+* Start your Jupyter Notebooks. Starting in your `powerai-counting-cars` cloned repo directory will help you find the notebook and the output as described below. Jupyter Notebooks will open in your browser.
+
+   ```
+   cd powerai-counting-cars
+   jupyter notebook
+   ```
+
+* Navigate to the `notebooks` directory and open the notebook file named `counting_cars.ipynb` by clicking on it.
+
+  ![open_notebook](doc/source/images/open_notebook.png)
+
+* Edit the cell below **Required setup!** to replace *your-guid-here* with the ID of your deployed model. If you are not running on SuperVessel, edit the host name too.
+
+  ![required_setup](doc/source/images/required_setup.png)
+
+* Use the menu pull-down `Cell > Run All` to run the notebook, or run the cells one at a time top-down using the play button.
+
+  ![run_all](doc/source/images/run_all.png)
+
+* As the cells run, watch the output for results or errors. A running cell will have a label like `In [*]`. A completed cell will have a run sequence number instead of the asterisk.
+
+* The **Test the API on a single frame** cell will demonstrate that you have correctly deployed your inference API. It should output JSON that includes classified cars. A portion of the output would look something like this:
+
+    ```
+      "classified": [
+        {
+          "confidence": 0.9997443556785583,
+          "ymax": 370,
+          "label": "car",
+          "xmax": 516,
+          "xmin": 365,
+          "ymin": 240
+        },
+    ```
+
+* The **Get object detection results for sampled frames** cell runs inference on a sampling of the video frames. The output will show a progress counter like this:
+
+  ![inference_progress](doc/source/images/inference_progress.png)
+
+* The **Inference, tracking, and annotation** cell processes every frame and has a similar progress counter. You can also preview the annotated frames as they are created in the `output` directory.
+
+* The **Play the annotated frames in the notebook** cell displays the annotated frames in a loop to demonstrate the new video after they are all created. The notebook animation is usually slower than the video.
+
+### 6. Create the annotated video
 
 You can create an MP4 video from the annotated frames if you have a working installation of [ffmpeg](https://www.ffmpeg.org/). The command is commented out as the last cell of the notebook. You can run it from there, or use the script in `tools/create_video.sh`. The script takes the output directory (with the annotated frames) as an argument like this:
 
@@ -181,9 +228,7 @@ cd powerai-counting-cars
 
 # Sample output
 
-As the notebook cells run, check for errors and watch the progress indicators. After the video has been annotated, the frames will play (like a video) in the notebook. The notebook playback is usually slow.
-
-Use the ffmpeg command provided in the last notebook cell to create an MP4 video from the frames for a higher quality, full speed playback.
+As the notebook cells run, check for errors and watch the progress indicators. After the video has been annotated, the frames will play (like a video) in the notebook. The notebook playback is usually slow. If you used `ffmpeg` to create an annotated video, you can play it back at full speed.
 
 Example annotated video: https://ibm.ent.box.com/file/290363697690
 
@@ -195,7 +240,7 @@ Example compressed and converted to gif:
 
 * Stopped adding cars.
 
-  > If you are using the shared SuperVessel environment, your model deployment may be limited to 1 hour. Simply deploy the model again and run the notebook over (or from where the errors started). Using cached results allows the notebook to continue where it left off.
+  > If you are using the shared SuperVessel environment, your model deployment may be limited to 1 hour. Simply deploy the model again and run the notebook over (or from where the errors started). Using cached results allows the notebook to continue where it left off. To deploy/redeploy the model, just click the `Deploy` button next to your trained model here: https://ny1.ptopenlab.com/AIVision/#!/trained-models.
 
 # Links
 * [Computer vision](https://en.wikipedia.org/wiki/Computer_vision): Read about computer vision on Wikipedia.
