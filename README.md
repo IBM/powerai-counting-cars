@@ -53,10 +53,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 > NOTE: The steps and examples in this README assume you are using SuperVessel. To download and install the technology preview on-premise instead, refer to [Download PowerAI Vision technology preview](https://developer.ibm.com/linuxonpower/deep-learning-powerai/technology-previews/powerai-vision/).
 
-To access SuperVessel, go to [Try Power AI](https://developer.ibm.com/linuxonpower/deep-learning-powerai/try-powerai/).
-Use `SuperVessel` and `Register for access` to the SuperVessel cloud where you can try the preview.
-
-![](doc/source/images/try_powerai.png)
+* To try the preview using the `SuperVessel` cloud, login or register [here](https://ny1.ptopenlab.com/AIVision).
 
 ## Jupyter Notebooks
 
