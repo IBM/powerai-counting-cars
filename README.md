@@ -40,10 +40,8 @@ When the reader has completed this Code Pattern, they will understand how to:
 * [Mobile](https://mobilefirstplatform.ibmcloud.com/): Systems of engagement are increasingly using mobile technology as the platform for delivery.
 * [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
-<!--
 # Watch the Video
-[![](http://img.youtube.com/vi/TODO/0.jpg)](https://www.youtube.com/watch?v=TODO)
--->
+[![](http://img.youtube.com/vi/19vaot75JCY/0.jpg)](https://youtu.be/19vaot75JCY)
 
 # Prerequisites
 
