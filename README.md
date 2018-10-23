@@ -66,6 +66,8 @@ The code included in this Code Pattern runs in a Jupyter Notebook. The notebook 
 5. [Run the notebook](#5-run-the-notebook)
 6. [Create the annotated video](#6-create-the-annotated-video)
 
+> Hint: If you need a shortcut, you can import the dataset from `data/examples/dataset_auto_labeled.zip`, train and deploy that dataset, and then run the notebook (but you'll get more out of this if you go through all the steps).
+
 ### 1. Create a dataset in Video Data Platform
 
 To create a new dataset for object detection training from a video, use PowerAI Video Data Platform and start with a small manually annotated dataset (we'll expand on it with automatic labeling later).
