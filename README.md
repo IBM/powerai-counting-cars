@@ -1,5 +1,7 @@
 # Detect, track, and count cars in a video
 
+![video-to-gif](doc/source/images/output-video-as-gif.gif) 
+
 Whether you are counting cars on a road or products on a conveyer belt, there are many use cases for computer vision with video. With video as input, automatic labeling can be used to create a better classifier with less manual effort. This Code Pattern shows you how to create and use a classifier to identify objects in motion and then track the objects and count them as they enter designated regions of interest. 
 
 In this Code Pattern, we will create a video car counter using PowerAI Vision Video Data Platform, OpenCV and a Jupyter Notebook. We'll use a little manual labeling and a lot of automatic labeling to train an object classifier to recognize cars on a highway. We'll load another car video into a Jupyter Notebook where we'll process the individual frames and annotate the video.
@@ -227,7 +229,9 @@ cd powerai-counting-cars
 
 As the notebook cells run, check for errors and watch the progress indicators. After the video has been annotated, the frames will play (like a video) in the notebook. The notebook playback is usually slow. If you used `ffmpeg` to create an annotated video, you can play it back at full speed.
 
-Example annotated video: https://ibm.ent.box.com/file/290363697690
+Example annotated video: [here](https://ibm.ent.box.com/file/290363697690)
+
+Example notebook with static output: [here](data/examples/example_notebook.ipynb)
 
 Example compressed and converted to gif:
 
