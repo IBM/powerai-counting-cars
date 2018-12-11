@@ -209,7 +209,8 @@ The code included in this Code Pattern runs in a Jupyter Notebook. After you con
           "xmax": 516,
           "xmin": 365,
           "ymin": 240
-        },
+        }
+      ]
     ```
 
 * The **Get object detection results for sampled frames** cell runs inference on a sampling of the video frames. The output will show a progress counter like this:
