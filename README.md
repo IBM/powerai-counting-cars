@@ -1,8 +1,8 @@
 # Detect, track, and count cars in a video
 
-![video-to-gif](doc/source/images/output-video-as-gif.gif) 
+![video-to-gif](doc/source/images/output-video-as-gif.gif)
 
-Whether you are counting cars on a road or products on a conveyer belt, there are many use cases for computer vision with video. With video as input, automatic labeling can be used to create a better classifier with less manual effort. This Code Pattern shows you how to create and use a classifier to identify objects in motion and then track the objects and count them as they enter designated regions of interest. 
+Whether you are counting cars on a road or products on a conveyer belt, there are many use cases for computer vision with video. With video as input, automatic labeling can be used to create a better classifier with less manual effort. This Code Pattern shows you how to create and use a classifier to identify objects in motion and then track the objects and count them as they enter designated regions of interest.
 
 In this Code Pattern, we will create a video car counter using PowerAI Vision Video Data Platform, OpenCV and a Jupyter Notebook. We'll use a little manual labeling and a lot of automatic labeling to train an object classifier to recognize cars on a highway. We'll load another car video into a Jupyter Notebook where we'll process the individual frames and annotate the video.
 
@@ -19,15 +19,17 @@ When the reader has completed this Code Pattern, they will understand how to:
 * Count objects in motion as they enter a region of interest
 * Annotate a video with bounding boxes, labels and statistics
 
-![](doc/source/images/architecture.png)
+![architecture](doc/source/images/architecture.png)
 
 ## Flow
+
 1. Upload a video using the PowerAI Vision web UI.
 2. Use automatic labeling and train a model.
 3. Deploy the model to create a PowerAI Vision inference API.
 4. Use a Jupyter Notebook to detect, track, and count cars in a video.
 
 ## Included components
+
 * [IBM Power Systems](https://www-03.ibm.com/systems/power/): A server built with open technologies and designed for mission-critical applications.
 * [IBM Power AI](https://www.ibm.com/ms-en/marketplace/deep-learning-platform): A software platform that makes deep learning, machine learning, and AI more accessible and better performing.
 * [IBM PowerAI Vision Technology Preview](https://developer.ibm.com/linuxonpower/deep-learning-powerai/technology-previews/powerai-vision/): A complete ecosystem for labeling datasets, training, and deploying deep learning models for computer vision.
@@ -36,6 +38,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 * [Nimbix Cloud Computing Platform](https://www.nimbix.net/): An HPC & Cloud Supercomputing platform enabling engineers, scientists & developers, to build, compute, analyze, and scale simulations in the cloud.
 
 ## Featured technologies
+
 * [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
 * [Cloud](https://www.ibm.com/developerworks/learn/cloud/): Accessing computer and information technology resources through the Internet.
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze structured and unstructured data in order to extract knowledge and insights.
@@ -43,6 +46,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 * [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
 # Watch the Video
+
 [![](http://img.youtube.com/vi/19vaot75JCY/0.jpg)](https://youtu.be/19vaot75JCY)
 
 # Prerequisites
@@ -80,7 +84,8 @@ To create a new dataset for object detection training from a video, use PowerAI 
 
   ![add_dataset](doc/source/images/video_data_platform_dataset.png)
 
-* Provide a name and description and click `Confirm`.
+* Click on `Create DataSet`, provide a name and description, and click `Confirm`.
+
 * Use the `Operation` button for your dataset and select `Manage Videos` with the pull-down.
 
   ![add_dataset](doc/source/images/manage_videos.png)
@@ -96,12 +101,13 @@ To create a new dataset for object detection training from a video, use PowerAI 
   ![new_tag](doc/source/images/new_tag.png)
 
 * Do manual tagging for 5 frames.
-    * Keep the `car` tag shown in the `Tag` pull-down.
-    * Use the `Capture Frame` camera icon to capture a frame.
-    * Drag a bounding box around each car in the frame.
-    * Press the `Save` button to save the annotated frame.
-    * Click on the video to let it play and then pause on another frame.
-    * Capture, tag and save 5 annotated frames.
+
+  * Keep the `car` tag shown in the `Tag` pull-down.
+  * Use the `Capture Frame` camera icon to capture a frame.
+  * Drag a bounding box around each car in the frame.
+  * Press the `Save` button to save the annotated frame.
+  * Click on the video to let it play and then pause on another frame.
+  * Capture, tag and save 5 annotated frames.
 
   ![manual_tagging](doc/source/images/manual_tagging.png)
 
@@ -173,7 +179,7 @@ The code included in this Code Pattern runs in a Jupyter Notebook. After you con
 
 * Start your Jupyter Notebooks. Starting in your `powerai-counting-cars` cloned repo directory will help you find the notebook and the output as described below. Jupyter Notebooks will open in your browser.
 
-   ```
+   ```bash
    cd powerai-counting-cars
    jupyter notebook
    ```
@@ -194,7 +200,7 @@ The code included in this Code Pattern runs in a Jupyter Notebook. After you con
 
 * The **Test the API on a single frame** cell will demonstrate that you have correctly deployed your inference API. It should output JSON that includes classified cars. A portion of the output would look something like this:
 
-    ```
+    ```json
       "classified": [
         {
           "confidence": 0.9997443556785583,
@@ -203,7 +209,8 @@ The code included in this Code Pattern runs in a Jupyter Notebook. After you con
           "xmax": 516,
           "xmin": 365,
           "ymin": 240
-        },
+        }
+      ]
     ```
 
 * The **Get object detection results for sampled frames** cell runs inference on a sampling of the video frames. The output will show a progress counter like this:
@@ -218,7 +225,7 @@ The code included in this Code Pattern runs in a Jupyter Notebook. After you con
 
 You can create an MP4 video from the annotated frames if you have a working installation of [ffmpeg](https://www.ffmpeg.org/). The command is commented out as the last cell of the notebook. You can run it from there, or use the script in `tools/create_video.sh`. The script takes the output directory (with the annotated frames) as an argument like this:
 
-```
+```bash
 cd powerai-counting-cars
 ./tools/create_video.sh notebooks/output
 ```
@@ -244,20 +251,19 @@ Example compressed and converted to gif:
   > If you are using the shared SuperVessel environment, your model deployment may be limited to 1 hour. Simply deploy the model again and run the notebook over (or from where the errors started). Using cached results allows the notebook to continue where it left off. To deploy/redeploy the model, just click the `Deploy` button next to your trained model here: https://ny1.ptopenlab.com/AIVision/#!/trained-models.
 
 # Links
+
 * [Computer vision](https://en.wikipedia.org/wiki/Computer_vision): Read about computer vision on Wikipedia.
 * [Object detection](https://en.wikipedia.org/wiki/Object_detection): Read about object detection on Wikipedia.
 * [Artificial intelligence](https://www.entrepreneur.com/article/283990): Can artificial intelligence identify pictures better than humans?
 * [From the developers](https://developer.ibm.com/linuxonpower/2017/08/30/ibm-powerai-vision-speeds-transfer-learning-greater-accuracy-real-world-example/): IBM PowerAI Vision speeds transfer learning with greater accuracy — a real world example.
 * [Artificial intelligence and machine learning](https://developer.ibm.com/ai/): Build artificial intelligence functions into your app.
 
-
 # Learn more
+
 * **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/code/technologies/artificial-intelligence/).
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
 * **PowerAI**: Get started or get scaling, faster, with a software distribution for machine learning running on the Enterprise Platform for AI: [IBM Power Systems](https://www.ibm.com/ms-en/marketplace/deep-learning-platform)
 
 # License
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
-
+This code pattern is licensed under the Apache License, Version 2. Separate third-party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1](https://developercertificate.org/) and the [Apache License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
