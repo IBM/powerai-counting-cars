@@ -1,3 +1,22 @@
+> :exclamation: SuperVessel upgrade is coming :exclamation:
+>
+>Start Date:  9-Jan-2019 8:00 am EST
+>
+>End Date:    18-Jan-2019 8:00 am EST (**All data will be deleted**)
+>
+>
+>The hardware and software in NY site will be updated to the latest version, **all users' dataset will be CLEANED.**
+>
+>**Please back up important data immediately, all data will be permanently deleted after January 18th.** 
+>
+>If you have any problems after this time frame with regard to connectivity, or if you have any questions regarding the >maintenance at any point, please mail to help@ptopenlab.com .
+>
+>We appreciate your patience during this work and welcome any feedback.
+>
+>
+>Thank you.
+>
+
 # Detect, track, and count cars in a video
 
 ![video-to-gif](doc/source/images/output-video-as-gif.gif)
