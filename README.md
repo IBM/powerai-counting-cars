@@ -236,7 +236,7 @@ cd powerai-counting-cars
 
 As the notebook cells run, check for errors and watch the progress indicators. After the video has been annotated, the frames will play (like a video) in the notebook. The notebook playback is usually slow. If you used `ffmpeg` to create an annotated video, you can play it back at full speed.
 
-Example annotated video: [here](https://ibm.ent.box.com/file/290363697690)
+Example annotated video: [here](https://ibm.box.com/v/powerai-vision-counted-cars)
 
 Example notebook with static output: [here](data/examples/example_notebook.ipynb)
 
