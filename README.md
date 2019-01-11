@@ -60,13 +60,13 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 * [Artificial Intelligence](https://developer.ibm.com/technologies/artificial-intelligence/): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
 * [Cloud](https://developer.ibm.com/depmodels/cloud/): Accessing computer and information technology resources through the Internet.
-* [Data Science](https://developer.ibm.com/code/technologies/data-science/): Systems and scientific methods to analyze structured and unstructured data in order to extract knowledge and insights.
+* [Data Science](https://developer.ibm.com/technologies/data-science/): Systems and scientific methods to analyze structured and unstructured data in order to extract knowledge and insights.
 * [Mobile](https://mobilefirstplatform.ibmcloud.com/): Systems of engagement are increasingly using mobile technology as the platform for delivery.
 * [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
 ## Watch the Video
 
-[![video](http://img.youtube.com/vi/19vaot75JCY/0.jpg)](https://youtu.be/19vaot75JCY)
+[![video](https://img.youtube.com/vi/19vaot75JCY/0.jpg)](https://youtu.be/19vaot75JCY)
 
 ## Prerequisites
 
@@ -80,7 +80,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ### Jupyter Notebooks
 
-The code included in this Code Pattern runs in a Jupyter Notebook. The notebook itself does not require PowerAI or Power Systems (only access to the deployed API). To run the Jupyter Notebook locally, install it using Anaconda.  The installation instructions are [here](http://jupyter.readthedocs.io/en/latest/install.html).
+The code included in this Code Pattern runs in a Jupyter Notebook. The notebook itself does not require PowerAI or Power Systems (only access to the deployed API). To run the Jupyter Notebook locally, install it using Anaconda.  The installation instructions are [here](https://jupyter.readthedocs.io/en/latest/install.html).
 
 ## Steps
 
