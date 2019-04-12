@@ -2,15 +2,15 @@
 
 ![video-to-gif](doc/source/images/output-video-as-gif.gif)
 
-Whether you are counting cars on a road or products on a conveyer belt, there are many use cases for computer vision with video. With video as input, automatic labeling can be used to create a better classifier with less manual effort. This Code Pattern shows you how to create and use a classifier to identify objects in motion and then track the objects and count them as they enter designated regions of interest.
+Whether you are counting cars on a road or products on a conveyer belt, there are many use cases for computer vision with video. With video as input, automatic labeling can be used to create a better classifier with less manual effort. This code pattern shows you how to create and use a classifier to identify objects in motion and then track the objects and count them as they enter designated regions of interest.
 
-In this Code Pattern, we will create a video car counter using PowerAI Vision Video Data Platform, OpenCV and a Jupyter Notebook. We'll use a little manual labeling and a lot of automatic labeling to train an object classifier to recognize cars on a highway. We'll load another car video into a Jupyter Notebook where we'll process the individual frames and annotate the video.
+In this code pattern, we will create a video car counter using PowerAI Vision Video Data Platform, OpenCV and a Jupyter Notebook. We'll use a little manual labeling and a lot of automatic labeling to train an object classifier to recognize cars on a highway. We'll load another car video into a Jupyter Notebook where we'll process the individual frames and annotate the video.
 
 We'll use our deployed model for inference to detect cars on a sample of the frames at a regular interval. We'll use OpenCV to track the cars from frame to frame in between inference. In addition to counting the cars as they are detected, we'll also count them as they cross a "finish line" for each lane and show cars per second.
 
 Credit goes to Michael Hollinger for his initial notebook counting objects with the PowerAI Vision Video Data Platform.
 
-When the reader has completed this Code Pattern, they will understand how to:
+When the reader has completed this code pattern, they will understand how to:
 
 * Use automatic labeling to create an object detection classifier from a video
 * Process frames of a video using a Jupyter Notebook, OpenCV, and PowerAI Vision
@@ -53,19 +53,19 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ### PowerAI Vision
 
-This Code Pattern requires PowerAI Vision.
+This code pattern requires PowerAI Vision.
 Go [here](https://developer.ibm.com/linuxonpower/deep-learning-powerai/vision/)
 to learn more about trial access (when available).
 
-*This Code Pattern was built with the PowerAI Vision Technology Preview v3.0.*
+*This code pattern has been updated with screenshots and instructions for IBM PowerAI Vision 1.1.3.*
 
 ### Jupyter Notebooks
 
-The code included in this Code Pattern runs in a Jupyter Notebook. The notebook itself does not require PowerAI or Power Systems (only access to the deployed API). To run the Jupyter Notebook locally, install it using Anaconda.  The installation instructions are [here](https://jupyter.readthedocs.io/en/latest/install.html).
+The code included in this code pattern runs in a Jupyter Notebook. The notebook itself does not require PowerAI or Power Systems (only access to the deployed API). To run the Jupyter Notebook locally, install it using Anaconda.  The installation instructions are [here](https://jupyter.readthedocs.io/en/latest/install.html).
 
 ## Steps
 
-1. [Create a dataset in Video Data Platform](#1-create-a-dataset-in-video-data-platform)
+1. [Create a dataset in PowerAI Vision](#1-create-a-dataset-in-powerai-vision)
 2. [Train and deploy](#2-train-and-deploy)
 3. [Automatic labeling](#3-automatic-labeling)
 4. [Train and deploy](#4-train-and-deploy)
@@ -74,108 +74,85 @@ The code included in this Code Pattern runs in a Jupyter Notebook. The notebook 
 
 > Hint: If you need a shortcut, you can import the dataset from `data/examples/dataset_auto_labeled.zip`, train and deploy that dataset, and then run the notebook (but you'll get more out of this if you go through all the steps).
 
-### 1. Create a dataset in Video Data Platform
+### 1. Create a dataset in PowerAI Vision
 
-To create a new dataset for object detection training from a video, use PowerAI Video Data Platform and start with a small manually annotated dataset (we'll expand on it with automatic labeling later).
+To create a new dataset for object detection training from a video, use the PowerAI Vision UI and start with a small manually annotated dataset (we'll expand on it with automatic labeling later).
 
 * Download the video to use to train the dataset from [here]( https://ibm.box.com/v/counting-cars-training). Use the `Download` button to create `training_video.mp4` in your browser's Downloads folder.
 
-* Go to [Video Data Platform](https://ny1.ptopenlab.com/video#/) and click on the `DataSet` card.
+* Click on the `Data Sets` tab.
+* Click on the `Create new data set` card.
+* Provide a data set name.
+* Click the `Create` button.
+* Click on the newly created data set card.
 
   ![add_dataset](doc/source/images/video_data_platform_dataset.png)
 
-* Click on `Create DataSet`, provide a name and description, and click `Confirm`.
+* Click on `Import files` and open your downloaded `training_video.mp4` file.
 
-* Use the dataset's operation button `☰` for your dataset and select `Manage Videos` in the drop-down list.
+* Select the new uncategorized card and click the `Label objects` button.
 
   ![add_dataset](doc/source/images/manage_videos.png)
 
-* Use the `Upload Video` button to upload the `training_video.mp4` from above.
-
-* Use the video's operation button `☰` and select `Add Label` in the drop-down list.
+* Click on `Auto capture`, set the capture interval to 5 seconds, and click the `Auto capture` button.
 
   ![add_label](doc/source/images/add_label.png)
 
-* Type `car` in the `Need More Tag? Input and Press enter...` box and press enter. The `car` tag is then added to the `Tag` drop-down list so you can start tagging cars.
+  > Tips!  Click on `How to label` for more detailed labeling tips.
 
-  ![new_tag](doc/source/images/new_tag.png)
+* Create a new object label for the data set by clicking `+ Add new` by the `Objects` list. For example, add a `car` object label.
 
-* Do manual tagging for at least 5 frames.
-
-  * Keep the `car` tag shown in the `Tag` box.
-  * Use the `Capture Frame` camera icon to capture a frame.
-  * Drag a bounding box around each car in the frame.
-  * Press the `Save` button to save the annotated frame.
-  * Click on the video to let it play and then pause on another frame.
-  * Capture, tag and save at least 5 frames annotated with at least 25 cars.
+* Label the objects in the frames by following these steps.
+  * Select a frame in the carousel.
+  * Select the correct object label.
+  * Choose `Box` from the bottom left.
+  * Draw a box around each car in each captured frame.
 
   ![manual_tagging](doc/source/images/manual_tagging.png)
 
-* Use the breadcrumb to go back to `Video Management`.
-
-  ![breadcrumb](doc/source/images/breadcrumb.png)
-
-* Use the video's operation button `☰` and select `Export Labels` in the drop-down list.
-
-  ![export_labels](doc/source/images/export_labels.png)
-
 ### 2. Train and deploy
 
-We need to train and deploy the model so that we can use it (for automatic labeling).
+#### Train the model
 
-* Go to https://ny1.ptopenlab.com/AIVision/index.html#!/datasets. The dataset that you just created by exporting labels should be at the top of the list. Note the timestamp to make sure you know which dataset is the one you just created.
+* Go back to the data set page and click `Train model`.
+* Select `Object detection`.
+* Review the `Advanced` settings. You can train faster (with less accuracy) by reducing the max iterations.
+* Click `Train`.
 
-* Click on `My DL Tasks` under My Workspace and then click the `Create New Task` button. Click on `Object Detection`.
+#### Deploy the model
 
-* Give the Object Detector a name and make sure your dataset is selected, then click `Build Model`.
-
-  ![build_model](doc/source/images/build_model.png)
-
-* A confirmation dialog will give you a time estimate.  Click `Create New Task` to get it started.
-
-* When the model is built, click on `Deploy and Test`.
-
-  ![deploy_and_test](doc/source/images/deploy_and_test.png)
-
-* If/when you want to deploy/redeploy later, just click the `Deploy` button next to your trained model here: https://ny1.ptopenlab.com/AIVision/#!/trained-models.
+* Go to the `Models` tab.
+* Click the `Deploy model` button.
+* Use the `Deployed Models` tab to see the status.
+* When the status is ready, click on the deployed model to get the API endpoint.
 
 ### 3. Automatic labeling
 
-We use the model that you trained with 5 or more manually annotated frames and use inference to automatically label more cars in your training video.
+We use the first deployed model that you trained with manually annotated frames and use inference to automatically label more cars in your training video.
 
-* Use the sidebar to go back to `Video Data Platform`.
+* Go back to the data set.
+* Select your video card.
+* Click the `Label objects` button.
+* Click on `Auto label`.
+* Enter 1 for `Capture Interval (Seconds)`.
+* Select your deployed model.
+* Click the `Auto label` button.
 
-* Use the video's operation button `☰` and select `Auto Labeling` in the drop-down list.
-
-  ![auto_labeling](doc/source/images/auto_labeling.png)
-
-* Click on the `Object to detect` drop-down list and select `car`. This API will be available while your car model is deployed.
-
-  ![select_detect_api](doc/source/images/select_detect_api.png)
-
-* Use the `Time Interval` drop-down list to select an interval. Use 1 second for our short video.
-
-* Click `Confirm`.
-
-* You can watch the progress as the number under auto label increases and the progress bar shows you the auto labeling progress.
-
-  ![auto_labeling_progress](doc/source/images/auto_labeling_progress.png)
-
-* When the task completes, use the video's operation button `☰` and select `Validate` to review the auto labeling.
+Frames are captured at the specified interval and labels are added by using the specified trained model. By default, the automatically added labels are light red.
+After processing, you can manually add labels to the frames that have been auto labeled and you can manipulate (move, resize) the labels that were automatically generated. If a frame with automatically generated labels is edited, all labels on the frame are converted to manual labels.
 
 ### 4. Train and deploy
 
-Export the labels again and repeat the above train and deploy process with the newest dataset which was enhanced with automatic labeling.
+Repeat the above train and deploy process with the newest dataset which was enhanced with automatic labeling.
 
-* Export labels
-* Build model
-* Deploy
+* Train model
+* Deploy model
 
 This dataset has many more frames and labeled objects. It will create a much more accurate model.
 
 ### 5. Run the notebook
 
-The code included in this Code Pattern runs in a Jupyter Notebook. After you configure the URL of your deployed model in the notebook, you can just run it, read it, and watch the results.
+The code included in this code pattern runs in a Jupyter Notebook. After you configure the URL of your deployed model in the notebook, you can just run it, read it, and watch the results.
 
 * Start your Jupyter Notebooks. Starting in your `powerai-counting-cars` cloned repo directory will help you find the notebook and the output as described below. Jupyter Notebooks will open in your browser.
 
@@ -188,7 +165,7 @@ The code included in this Code Pattern runs in a Jupyter Notebook. After you con
 
   ![open_notebook](doc/source/images/open_notebook.png)
 
-* Edit the cell below **Required setup!** to replace *your-guid-here* with the ID of your deployed model. If you are not running on SuperVessel, edit the host name too.
+* Edit the cell below **Required setup!** to replace the URL with the API endpoint of your deployed model. Use the copy button to capture the whole URL.
 
   ![required_setup](doc/source/images/required_setup.png)
 
@@ -248,7 +225,7 @@ Example compressed and converted to gif:
 
 * Stopped adding cars.
 
-  > If you are using the shared SuperVessel environment, your model deployment may be limited to 1 hour. Simply deploy the model again and run the notebook over (or from where the errors started). Using cached results allows the notebook to continue where it left off. To deploy/redeploy the model, just click the `Deploy` button next to your trained model here: https://ny1.ptopenlab.com/AIVision/#!/trained-models.
+  > If you are using a trial environment, your model deployment may be limited to 1 hour. Simply deploy the model again and run the notebook over (or from where the errors started). Using cached results allows the notebook to continue where it left off.
 
 ## Links
 
@@ -260,8 +237,8 @@ Example compressed and converted to gif:
 
 ## Learn more
 
-* **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/technologies/artificial-intelligence/).
-* **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
+* **Artificial intelligence code patterns**: Enjoyed this code pattern? Check out our other [AI code patterns](https://developer.ibm.com/technologies/artificial-intelligence/).
+* **AI and data code pattern playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our code pattern videos
 * **PowerAI**: Get started or get scaling, faster, with a software distribution for machine learning running on the Enterprise Platform for AI: [IBM Power Systems](https://www.ibm.com/us-en/marketplace/deep-learning-platform)
 
 ## License
