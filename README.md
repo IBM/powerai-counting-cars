@@ -78,7 +78,7 @@ The code included in this code pattern runs in a Jupyter Notebook. The notebook 
 
 To create a new dataset for object detection training from a video, use the PowerAI Vision UI and start with a small manually annotated dataset (we'll expand on it with automatic labeling later).
 
-* Download the video to use to train the dataset from [here]( https://ibm.box.com/v/counting-cars-training). Use the `Download` button to create `training_video.mp4` in your browser's Downloads folder.
+* Download the video to use to train the dataset from [here](https://raw.githubusercontent.com/IBM/powerai-counting-cars/master/data/training_video.mp4). Use the `Download` button to create `training_video.mp4` in your browser's Downloads folder.
 
 * Click on the `Data Sets` tab.
 * Click on the `Create new data set` card.
