@@ -1,0 +1,4 @@
+language: generic
+script: false
+notifications:
+  email: false
