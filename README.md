@@ -35,7 +35,6 @@ When the reader has completed this code pattern, they will understand how to:
 * [IBM Maximo Visual Inspection](https://www.ibm.com/products/ibm-maximo-visual-inspection): Rapidly unleash the power of computer vision for inspection automation without deep learning expertise.
 * [Jupyter Notebook](https://jupyter.org/): An open source web application that allows you to create and share documents that contain live code, equations, visualizations, and explanatory text.
 * [OpenCV](https://opencv.org): Open source computer vision library.
-* [Nimbix Cloud Computing Platform](https://www.nimbix.net/): An HPC & Cloud Supercomputing platform enabling engineers, scientists & developers, to build, compute, analyze, and scale simulations in the cloud.
 
 ## Featured technologies
 
@@ -231,7 +230,7 @@ Example compressed and converted to gif:
 ## Links
 
 * [Maximo Visual Inspection Learning Path](https://developer.ibm.com/technologies/vision/series/learning-path-powerai-vision/): From computer vision basics to creating your own apps.
-* [Maximo Visual Inspection Object Detection](https://github.com/IBM/powerai-vision-object-detection)
+* [Maximo Visual Inspection Object Detection](https://github.com/IBM/powerai-vision-object-detection): use Maximo Visual Insights Object Detection to detect and label objects, within an image, based on customized training.
 * [Computer vision](https://en.wikipedia.org/wiki/Computer_vision): Read about computer vision on Wikipedia.
 * [Object detection](https://en.wikipedia.org/wiki/Object_detection): Read about object detection on Wikipedia.
 * [Artificial intelligence](https://www.entrepreneur.com/article/283990): Can artificial intelligence identify pictures better than humans?
