@@ -2,19 +2,21 @@
 
 ![video-to-gif](doc/source/images/output-video-as-gif.gif)
 
+**Note: This repo has been updated to use Maximo Visual Inspection (formerly known as PowerAI Vision). Everything is the same except for the name itself.**
+
 Whether you are counting cars on a road or products on a conveyer belt, there are many use cases for computer vision with video. With video as input, automatic labeling can be used to create a better classifier with less manual effort. This code pattern shows you how to create and use a classifier to identify objects in motion and then track the objects and count them as they enter designated regions of interest.
 
-In this code pattern, we will create a video car counter using PowerAI Vision Video Data Platform, OpenCV and a Jupyter Notebook. We'll use a little manual labeling and a lot of automatic labeling to train an object classifier to recognize cars on a highway. We'll load another car video into a Jupyter Notebook where we'll process the individual frames and annotate the video.
+In this code pattern, we will create a video car counter using Maximo Visual Inspection, OpenCV and a Jupyter Notebook. We'll use a little manual labeling and a lot of automatic labeling to train an object classifier to recognize cars on a highway. We'll load another car video into a Jupyter Notebook where we'll process the individual frames and annotate the video.
 
 We'll use our deployed model for inference to detect cars on a sample of the frames at a regular interval. We'll use OpenCV to track the cars from frame to frame in between inference. In addition to counting the cars as they are detected, we'll also count them as they cross a "finish line" for each lane and show cars per second.
 
-Credit goes to Michael Hollinger for his initial notebook counting objects with the PowerAI Vision Video Data Platform.
+Credit goes to Michael Hollinger for his initial notebook counting objects with PowerAI Vision.
 
 When the reader has completed this code pattern, they will understand how to:
 
 * Use automatic labeling to create an object detection classifier from a video
-* Process frames of a video using a Jupyter Notebook, OpenCV, and PowerAI Vision
-* Detect objects in video frames with PowerAI Vision
+* Process frames of a video using a Jupyter Notebook, OpenCV, and Maximo Visual Inspection (formerly known as PowerAI Vision)
+* Detect objects in video frames with Maximo Visual Inspection
 * Track objects from frame to frame with OpenCV
 * Count objects in motion as they enter a region of interest
 * Annotate a video with bounding boxes, labels and statistics
@@ -23,16 +25,14 @@ When the reader has completed this code pattern, they will understand how to:
 
 ## Flow
 
-1. Upload a video using the PowerAI Vision web UI.
+1. Upload a video using the Maximo Visual Inspection web UI.
 2. Use automatic labeling and train a model.
-3. Deploy the model to create a PowerAI Vision inference API.
+3. Deploy the model to create a Maximo Visual Inspection (formerly known as PowerAI Vision) inference API.
 4. Use a Jupyter Notebook to detect, track, and count cars in a video.
 
 ## Included components
 
-* [IBM Power Systems](https://www.ibm.com/it-infrastructure/power): A server built with open technologies and designed for mission-critical applications.
-* [IBM Power AI](https://www.ibm.com/us-en/marketplace/deep-learning-platform): A software platform that makes deep learning, machine learning, and AI more accessible and better performing.
-* [IBM PowerAI Vision Technology Preview](https://developer.ibm.com/linuxonpower/deep-learning-powerai/technology-previews/powerai-vision/): A complete ecosystem for labeling datasets, training, and deploying deep learning models for computer vision.
+* [IBM Maximo Visual Inspection](https://www.ibm.com/products/ibm-maximo-visual-inspection): Rapidly unleash the power of computer vision for inspection automation without deep learning expertise.
 * [Jupyter Notebook](https://jupyter.org/): An open source web application that allows you to create and share documents that contain live code, equations, visualizations, and explanatory text.
 * [OpenCV](https://opencv.org): Open source computer vision library.
 * [Nimbix Cloud Computing Platform](https://www.nimbix.net/): An HPC & Cloud Supercomputing platform enabling engineers, scientists & developers, to build, compute, analyze, and scale simulations in the cloud.
@@ -53,19 +53,20 @@ When the reader has completed this code pattern, they will understand how to:
 
 ### PowerAI Vision
 
-This code pattern requires PowerAI Vision.
-Go [here](https://developer.ibm.com/linuxonpower/deep-learning-powerai/vision/)
-to learn more about trial access (when available).
+This code pattern requires Maximo Visual Inspection (formerly known as PowerAI Vision).
 
-*This code pattern has been updated with screenshots and instructions for IBM PowerAI Vision 1.1.3.*
+Go [here](https://www.ibm.com/support/pages/ibm-maximo-visual-inspection)
+to learn more about trial access (Scroll down to the `Give it a try` section).
+
+*This code pattern has been updated with screenshots and instructions for PowerAI Vision 1.1.3, but the instructions are the same for IBM Maximo Visual Insights.*
 
 ### Jupyter Notebooks
 
-The code included in this code pattern runs in a Jupyter Notebook. The notebook itself does not require PowerAI or Power Systems (only access to the deployed API). To run the Jupyter Notebook locally, install it using Anaconda.  The installation instructions are [here](https://jupyter.readthedocs.io/en/latest/install.html).
+The code included in this code pattern runs in a Jupyter Notebook. The notebook itself does not require Maximo Visual Inspection or Power Systems (only access to the deployed API). To run the Jupyter Notebook locally, install it using Anaconda.  The installation instructions are [here](https://jupyter.readthedocs.io/en/latest/install.html).
 
 ## Steps
 
-1. [Create a dataset in PowerAI Vision](#1-create-a-dataset-in-powerai-vision)
+1. [Create a dataset in Maximo Visual Inspection](#1-create-a-dataset-in-maximo-visual-inspection)
 2. [Train and deploy](#2-train-and-deploy)
 3. [Automatic labeling](#3-automatic-labeling)
 4. [Train and deploy](#4-train-and-deploy)
@@ -74,9 +75,8 @@ The code included in this code pattern runs in a Jupyter Notebook. The notebook 
 
 > Hint: If you need a shortcut, you can import the dataset from `data/examples/dataset_auto_labeled.zip`, train and deploy that dataset, and then run the notebook (but you'll get more out of this if you go through all the steps).
 
-### 1. Create a dataset in PowerAI Vision
-
-To create a new dataset for object detection training from a video, use the PowerAI Vision UI and start with a small manually annotated dataset (we'll expand on it with automatic labeling later).
+### 1. Create a dataset in Maximo Visual Inspection
+To create a new dataset for object detection training from a video, use the Maximo Visual Inspection  UI and start with a small manually annotated dataset (we'll expand on it with automatic labeling later).
 
 * Download the video to use to train the dataset from [here](https://raw.githubusercontent.com/IBM/powerai-counting-cars/master/data/training_video.mp4). Use the `Download` button to create `training_video.mp4` in your browser's Downloads folder.
 
@@ -228,11 +228,11 @@ Example compressed and converted to gif:
   > If you are using a trial environment, your model deployment may be limited to 1 hour. Simply deploy the model again and run the notebook over (or from where the errors started). Using cached results allows the notebook to continue where it left off.
 
 ## Links
-
+* [Maximo Visual Inspection Learning Path](https://developer.ibm.com/technologies/vision/series/learning-path-powerai-vision/): From computer vision basics to creating your own apps.
+* [Maximo Visual Inspection Object Detection](https://github.com/IBM/powerai-vision-object-detection)
 * [Computer vision](https://en.wikipedia.org/wiki/Computer_vision): Read about computer vision on Wikipedia.
 * [Object detection](https://en.wikipedia.org/wiki/Object_detection): Read about object detection on Wikipedia.
 * [Artificial intelligence](https://www.entrepreneur.com/article/283990): Can artificial intelligence identify pictures better than humans?
-* [From the developers](https://developer.ibm.com/linuxonpower/2017/08/30/ibm-powerai-vision-speeds-transfer-learning-greater-accuracy-real-world-example/): IBM PowerAI Vision speeds transfer learning with greater accuracy — a real world example.
 * [Artificial intelligence and machine learning](https://developer.ibm.com/technologies/artificial-intelligence/): Build artificial intelligence functions into your app.
 
 ## Learn more
