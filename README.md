@@ -76,6 +76,7 @@ The code included in this code pattern runs in a Jupyter Notebook. The notebook 
 > Hint: If you need a shortcut, you can import the dataset from `data/examples/dataset_auto_labeled.zip`, train and deploy that dataset, and then run the notebook (but you'll get more out of this if you go through all the steps).
 
 ### 1. Create a dataset in Maximo Visual Inspection
+
 To create a new dataset for object detection training from a video, use the Maximo Visual Inspection  UI and start with a small manually annotated dataset (we'll expand on it with automatic labeling later).
 
 * Download the video to use to train the dataset from [here](https://raw.githubusercontent.com/IBM/powerai-counting-cars/master/data/training_video.mp4). Use the `Download` button to create `training_video.mp4` in your browser's Downloads folder.
@@ -228,6 +229,7 @@ Example compressed and converted to gif:
   > If you are using a trial environment, your model deployment may be limited to 1 hour. Simply deploy the model again and run the notebook over (or from where the errors started). Using cached results allows the notebook to continue where it left off.
 
 ## Links
+
 * [Maximo Visual Inspection Learning Path](https://developer.ibm.com/technologies/vision/series/learning-path-powerai-vision/): From computer vision basics to creating your own apps.
 * [Maximo Visual Inspection Object Detection](https://github.com/IBM/powerai-vision-object-detection)
 * [Computer vision](https://en.wikipedia.org/wiki/Computer_vision): Read about computer vision on Wikipedia.
