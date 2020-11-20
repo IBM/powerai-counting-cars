@@ -167,7 +167,7 @@ The code included in this code pattern runs in a Jupyter Notebook. After you con
 
 * Edit the cell below **Required setup!** to replace the URL with the API endpoint of your deployed model. Use the copy button to capture the whole URL.
 
-  <!-- ![required_setup](doc/source/images/required_setup.png) -->
+  ![required_setup](doc/source/images/required_setup.png)
 
 * Use the drop-down menu `Cell > Run All` to run the notebook, or run the cells one at a time top-down using the play button.
 
