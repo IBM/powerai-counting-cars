@@ -1,4 +1,12 @@
-language: generic
-script: false
-notifications:
-  email: false
+language: node_js
+cache:
+  directories:
+  - "node_modules"
+node_js:
+  - "lts/*"
+before_script:
+- npm install -g markdownlint-cli
+script:
+- markdownlint --config $TRAVIS_BUILD_DIR/.markdownlint.json README.md
+- if grep -n -T --before-context 2 --after-context 1 TODO README.md; then exit 1; fi
+- if grep -n -T --before-context 2 --after-context 1 FIXME README.md; then exit 1; fi
