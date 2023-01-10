@@ -21,7 +21,7 @@ When the reader has completed this code pattern, they will understand how to:
 * Count objects in motion as they enter a region of interest
 * Annotate a video with bounding boxes, labels and statistics
 
-![architecture](doc/source/images/architecture.png)
+![architecture](doc/source/images/architecture-cars1-09.png)
 
 ## Flow
 
