@@ -1,3 +1,7 @@
+# WARNING: This repository is no longer maintained
+
+> This repository will not be updated. The repository will be kept available in read-only mode.
+
 # Detect, track, and count cars in a video
 
 ![video-to-gif](doc/source/images/output-video-as-gif.gif)
